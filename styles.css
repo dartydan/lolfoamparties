@@ -452,7 +452,16 @@ body {
     }
 
     .packages {
-        padding-bottom: 3rem;
+        padding: 0 1.5rem 3rem 1.5rem;
+    }
+
+    .package-cards {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    
+    .package-card:last-child {
+        max-width: 100%;
     }
 }
 
@@ -483,6 +492,17 @@ body {
 
 .contact-info a:hover {
     color: var(--dark-color);
+}
+
+/* Update phone number link styles */
+.contact-info a[href^="tel"] {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a[href^="tel"]:hover {
+    color: var(--accent2); /* Orange accent color */
 }
 
 /* Responsive adjustments */
@@ -1647,4 +1667,146 @@ p, li, label, input, textarea, select {
 .form-group.upgrades input[type="checkbox"] {
     width: auto;
     margin-right: 0.5rem;
+}
+
+/* Keep desktop alignment left */
+.package-card:last-child .cta-button {
+    margin-top: 1.5rem;
+    align-self: flex-start;
+}
+
+/* Center button on mobile */
+@media (max-width: 768px) {
+    .package-card:last-child .content-wrapper {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .package-card:last-child .cta-button {
+        align-self: center;
+    }
+}
+
+/* Update certifications section styles */
+.certifications-section {
+    background: linear-gradient(45deg, var(--bold-color), var(--accent2));
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add a subtle animated gradient overlay */
+.certifications-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Ensure content stays above gradient */
+.cert-items {
+    position: relative;
+    z-index: 1;
+}
+
+.cert-items {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cert-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 15px;
+    min-width: 200px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cert-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cert-item i {
+    font-size: 2.5rem;
+    color: var(--bold-color);
+}
+
+.cert-item span {
+    font-family: 'Bubblegum Sans', cursive;
+    color: var(--dark-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .certifications-section {
+        padding: 2rem 1rem;
+    }
+    
+    .cert-items {
+        gap: 1.5rem;
+    }
+    
+    .cert-item {
+        min-width: 150px;
+        padding: 1rem;
+    }
+}
+
+/* Update social link styles */
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    text-decoration: none; /* Remove underline */
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.social-link span {
+    color: var(--white);
+}
+
+.social-link:hover {
+    opacity: 0.8;
+}
+
+/* Remove any inherited underline styles */
+footer .contact-info .social-link {
+    text-decoration: none;
 } 
