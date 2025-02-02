@@ -257,8 +257,14 @@
                 </div>
                 <div class="form-group upgrades">
                     <p>Interested in upgrading?</p>
-                    <label><input type="checkbox" name="colored-foam"> Colored foam</label>
-                    <label><input type="checkbox" name="extra-time"> Extra time</label>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="colored-foam" name="colored-foam">
+                        <label for="colored-foam">Colored foam</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="extra-time" name="extra-time">
+                        <label for="extra-time">Extra time</label>
+                    </div>
                 </div>
                 <button type="submit" class="cta-button">Submit</button>
             </form>

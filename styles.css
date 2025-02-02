@@ -1646,27 +1646,48 @@ p, li, label, input, textarea, select {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .form-group.upgrades p {
     margin-bottom: 0.5rem;
     font-weight: 600;
+    color: var(--dark-color);
 }
 
-.form-group.upgrades label {
-    position: static;
-    transform: none;
-    background: none;
+.form-group.upgrades .checkbox-wrapper {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.form-group.upgrades .checkbox-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .form-group.upgrades input[type="checkbox"] {
-    width: auto;
-    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--bold-color);
+}
+
+.form-group.upgrades label {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+}
+
+/* Remove any conflicting styles */
+.form-group.upgrades input[type="checkbox"] ~ label {
+    position: static;
+    transform: none;
+    background: none;
+    padding: 0;
 }
 
 /* Keep desktop alignment left */
