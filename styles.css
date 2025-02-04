@@ -826,6 +826,7 @@ footer .contact-info a:hover {
     backdrop-filter: blur(5px);
 }
 
+/* Base icon styles for all packages */
 .package-card li::before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -834,28 +835,45 @@ footer .contact-info a:hover {
     color: var(--bold-color);
 }
 
-/* Different icons for different list items */
-.package-card li:nth-child(1)::before {
+/* Base icons for all packages */
+.package-card:not(.featured) li:nth-child(1)::before {
     content: "\f0e7"; /* bolt */
 }
 
-.package-card li:nth-child(2)::before {
+.package-card:not(.featured) li:nth-child(2)::before {
     content: "\f028"; /* volume */
 }
 
-.package-card li:nth-child(3)::before {
+.package-card:not(.featured) li:nth-child(3)::before {
     content: "\f017"; /* clock */
 }
 
-.package-card li:nth-child(4)::before {
+.package-card:not(.featured) li:nth-child(4)::before {
     content: "\f500"; /* users */
 }
 
-.package-card li:nth-child(5)::before {
-    content: "\f185"; /* sun */
+/* Night Foam package icons */
+.package-card.featured li:nth-child(1)::before {
+    content: "\f0e7"; /* bolt */
 }
 
-/* Adjust featured card icons */
+.package-card.featured li:nth-child(2)::before {
+    content: "\f028"; /* volume */
+}
+
+.package-card.featured li:nth-child(3)::before {
+    content: "\f51f"; /* disco ball */
+}
+
+.package-card.featured li:nth-child(4)::before {
+    content: "\f017"; /* clock */
+}
+
+.package-card.featured li:nth-child(5)::before {
+    content: "\f500"; /* users */
+}
+
+/* Adjust featured card icons color */
 .package-card.featured li::before {
     color: var(--accent3);
 }
@@ -1830,4 +1848,26 @@ p, li, label, input, textarea, select {
 /* Remove any inherited underline styles */
 footer .contact-info .social-link {
     text-decoration: none;
+}
+
+/* Update the icon for party lights in the Night Foam Party package */
+.package-card.featured li:nth-child(3)::before {
+    content: "\f51f"; /* fa-compact-disc - looks like a disco ball */
+}
+
+/* Keep the other icons the same */
+.package-card li:nth-child(1)::before {
+    content: "\f0e7"; /* bolt */
+}
+
+.package-card li:nth-child(2)::before {
+    content: "\f028"; /* volume */
+}
+
+.package-card li:nth-child(4)::before {
+    content: "\f017"; /* clock */
+}
+
+.package-card li:nth-child(5)::before {
+    content: "\f500"; /* users */
 } 
