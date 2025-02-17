@@ -68,16 +68,6 @@
                 </div>
                 
                 <div class="bento-item">
-                    <h3>Safe For Everyone</h3>
-                    <p>Our hypo-allergenic, biodegradable solution makes LOL Foam parties exciting for kids, teens, adults, and even pets!</p>
-                </div>
-                
-                <div class="bento-item">
-                    <h3>Perfect For Any Event</h3>
-                    <p>Foam is perfect for birthdays, colleges, corporate events, daycares, churches, festivals, and everything in between!</p>
-                </div>
-                
-                <div class="bento-item">
                     <h3>Easy Planning</h3>
                     <p>We strive to make planning easy and parties memorable.</p>
                 </div>
@@ -113,7 +103,7 @@
                         <li>Foam cannon and solution with professional operator</li>
                         <li>Speaker for music</li>
                         <li>60-minutes of daytime foam fun</li>
-                        <li>Perfect for about 30 participants</li>
+                        <li>Perfect for about 25 participants</li>
                     </ul>
                     <p class="note">Ask us about adding additional time or colored foam!</p>
                     <a href="#book?package=frenzy" class="cta-button">Book Now!</a>
@@ -127,7 +117,7 @@
                         <li>Speaker for music</li>
                         <li>Party lights</li>
                         <li>60-minutes of foam fun</li>
-                        <li>Perfect for about 30 participants</li>
+                        <li>Perfect for about 25 participants</li>
                     </ul>
                     <p class="note">Ask us about adding additional time or GLOWING foam!</p>
                     <a href="#book?package=night" class="cta-button">Book Now!</a>
@@ -137,7 +127,7 @@
                     <div class="content-wrapper">
                         <h3>Foam Festivities</h3>
                         <p class="price">Starting at $600</p>
-                        <p>Hosting an event for more than 30 people? We'll bring more foam!</p>
+                        <p>Hosting a larger event? We'll bring more foam!</p>
                         <a href="#book?package=festival" class="cta-button">Contact Us</a>
                     </div>
                 </div>
@@ -155,7 +145,7 @@
                     <span>Biodegradable safe for grass</span>
                 </div>
                 <div class="cert-item">
-                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-puzzle-piece"></i>
                     <span>Certified autism resource</span>
                 </div>
                 <div class="cert-item">
@@ -192,6 +182,25 @@
             <div class="faq-grid">
                 <!-- FAQ items will be added via JavaScript -->
             </div>
+        </section>
+
+        <section id="book" class="booking-section">
+            <h2>Book a Party</h2>
+            <form id="inline-booking-form" class="booking-form simple-form">
+                <div class="form-group">
+                    <input type="text" id="inline-fullName" name="fullName" required>
+                    <label for="inline-fullName">Full Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="inline-email" name="email" required>
+                    <label for="inline-email">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="inline-phone" name="phone" required>
+                    <label for="inline-phone">Phone number with area code</label>
+                </div>
+                <button type="button" class="cta-button continue-btn">Continue</button>
+            </form>
         </section>
     </main>
 
@@ -248,10 +257,9 @@
                 <div class="form-group">
                     <select id="package" name="package" required>
                         <option value="">Select a foam package</option>
-                        <option value="fun">Foam Fun</option>
                         <option value="frenzy">Foam Frenzy</option>
                         <option value="night">Night Foam</option>
-                        <option value="festival">Fairs & Festivals</option>
+                        <option value="festival">Larger Events</option>
                         <option value="thinking">Still thinking</option>
                     </select>
                 </div>

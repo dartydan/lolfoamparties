@@ -1166,12 +1166,40 @@ body.popup-open {
     z-index: 1;
 }
 
-.bento-item.main:hover .content {
-    opacity: 0;
+/* Desktop hover effect */
+@media (min-width: 769px) {
+    .bento-item.main:hover .content {
+        opacity: 0;
+    }
+
+    .bento-item.main:hover .image-overlay {
+        opacity: 1;
+    }
 }
 
-.bento-item.main:hover .image-overlay {
-    opacity: 1;
+/* Mobile styles */
+@media (max-width: 768px) {
+    .bento-item.main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 200px;
+        gap: 1rem;
+        padding: 0; /* Remove default padding */
+    }
+
+    .bento-item.main .content {
+        padding: 1.5rem;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .bento-item.main .image-overlay {
+        position: relative;
+        opacity: 1;
+        height: 200px;
+        margin: 0 0 1.5rem 0; /* Add bottom margin */
+        border-radius: 0 0 15px 15px;
+    }
 }
 
 /* Grid layout adjustments */
@@ -1767,24 +1795,26 @@ p, li, label, input, textarea, select {
     z-index: 1;
 }
 
+/* Update certification items for uniformity */
 .cert-items {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .cert-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    padding: 1.5rem;
+    padding: 2rem;
     background: var(--white);
     border-radius: 15px;
-    min-width: 200px;
+    min-height: 180px; /* Set uniform height */
     transition: transform 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -1808,17 +1838,14 @@ p, li, label, input, textarea, select {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .certifications-section {
-        padding: 2rem 1rem;
-    }
-    
     .cert-items {
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
     }
     
     .cert-item {
-        min-width: 150px;
-        padding: 1rem;
+        padding: 1.5rem;
+        min-height: 160px; /* Slightly smaller on mobile */
     }
 }
 
@@ -1870,4 +1897,60 @@ footer .contact-info .social-link {
 
 .package-card li:nth-child(5)::before {
     content: "\f500"; /* users */
+}
+
+/* Update autism resource icon */
+.cert-item:nth-child(3) i::before {
+    content: "\f12e"; /* fa-puzzle-piece */
+}
+
+/* Add styles for the inline booking section */
+.booking-section {
+    padding: 4rem 2rem;
+    background: var(--white);
+}
+
+.booking-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.booking-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bold-color), var(--accent3));
+    border-radius: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .booking-section {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Add styles for the simplified form */
+.simple-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.simple-form .continue-btn {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* Update popup styles to handle pre-filled data */
+.popup-overlay.from-simple-form .popup-content {
+    transform: translateY(0);
 } 

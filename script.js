@@ -173,6 +173,37 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleMenu();
         }
     });
+
+    // Handle simple form submission
+    const simpleForm = document.getElementById('inline-booking-form');
+    const continueBtn = simpleForm.querySelector('.continue-btn');
+    
+    continueBtn.addEventListener('click', () => {
+        // Get values from simple form
+        const name = document.getElementById('inline-fullName').value;
+        const email = document.getElementById('inline-email').value;
+        const phone = document.getElementById('inline-phone').value;
+        
+        // Validate required fields
+        if (!name || !email || !phone) {
+            alert('Please fill in all fields to continue');
+            return;
+        }
+        
+        // Pre-fill popup form
+        document.getElementById('fullName').value = name;
+        document.getElementById('email').value = email;
+        document.getElementById('phone').value = phone;
+        
+        // Trigger labels to move up
+        document.getElementById('fullName').dispatchEvent(new Event('input'));
+        document.getElementById('email').dispatchEvent(new Event('input'));
+        document.getElementById('phone').dispatchEvent(new Event('input'));
+        
+        // Open popup
+        popup.classList.add('active', 'from-simple-form');
+        document.body.classList.add('popup-open');
+    });
 });
 
 // Add bubble animation to the background
