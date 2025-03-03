@@ -188,15 +188,15 @@
             <h2>Book a Party</h2>
             <form id="inline-booking-form" class="booking-form simple-form">
                 <div class="form-group">
-                    <input type="text" id="inline-fullName" name="fullName" required>
+                    <input type="text" id="inline-fullName" name="fullName" placeholder=" " required>
                     <label for="inline-fullName">Full Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="inline-email" name="email" required>
+                    <input type="email" id="inline-email" name="email" placeholder=" " required>
                     <label for="inline-email">Email</label>
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="inline-phone" name="phone" required>
+                    <input type="tel" id="inline-phone" name="phone" placeholder=" " required>
                     <label for="inline-phone">Phone number with area code</label>
                 </div>
                 <button type="button" class="cta-button continue-btn">Continue</button>
@@ -220,42 +220,41 @@
         <div class="popup-content">
             <button class="close-popup" aria-label="Close booking form">&times;</button>
             <h2>Book a Party</h2>
-            <form id="booking-form" class="booking-form">
-                <!-- Move all the existing form content here -->
+            <form id="booking-form" class="booking-form" onsubmit="return false;">
                 <div class="form-group">
-                    <input type="text" id="fullName" name="fullName" required>
+                    <input type="text" id="fullName" name="fullName" placeholder=" " required>
                     <label for="fullName">Full Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder=" " required>
                     <label for="email">Email</label>
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" placeholder=" " required>
                     <label for="phone">Phone number with area code</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="company" name="company" required>
+                    <input type="text" id="company" name="company" placeholder=" ">
                     <label for="company">Company (Optional)</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="address" name="address" required>
+                    <input type="text" id="address" name="address" placeholder=" ">
                     <label for="address">Event Address</label>
                 </div>
                 <div class="form-group">
-                    <input type="date" id="eventDate" name="eventDate" required>
+                    <input type="date" id="eventDate" name="eventDate" placeholder=" ">
                     <label for="eventDate">Date of Event</label>
                 </div>
                 <div class="form-group">
-                    <input type="time" id="eventTime" name="eventTime" required>
+                    <input type="time" id="eventTime" name="eventTime" placeholder=" ">
                     <label for="eventTime">Event start time</label>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" name="message" required></textarea>
+                    <textarea id="message" name="message" placeholder=" "></textarea>
                     <label for="message">Message / Please tell us about your event</label>
                 </div>
                 <div class="form-group">
-                    <select id="package" name="package" required>
+                    <select id="package" name="package">
                         <option value="">Select a foam package</option>
                         <option value="frenzy">Foam Frenzy</option>
                         <option value="night">Night Foam</option>

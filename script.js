@@ -204,6 +204,69 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.classList.add('active', 'from-simple-form');
         document.body.classList.add('popup-open');
     });
+
+    // Update form submission handling
+    document.getElementById('booking-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const form = e.target;
+        
+        // Add loading state
+        form.classList.add('loading');
+        
+        try {
+            // Get all form values
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                address: document.getElementById('address').value,
+                eventDate: document.getElementById('eventDate').value,
+                eventTime: document.getElementById('eventTime').value,
+                message: document.getElementById('message').value,
+                package: document.getElementById('package').value,
+                coloredFoam: document.getElementById('colored-foam').checked ? 'Yes' : 'No',
+                extraTime: document.getElementById('extra-time').checked ? 'Yes' : 'No'
+            };
+
+            // Create email body
+            const emailBody = `
+New Foam Party Booking Request:
+
+Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company}
+Event Address: ${formData.address}
+Event Date: ${formData.eventDate}
+Event Time: ${formData.eventTime}
+Package: ${formData.package}
+Colored Foam: ${formData.coloredFoam}
+Extra Time: ${formData.extraTime}
+
+Message:
+${formData.message}
+            `.trim();
+
+            // Create mailto link
+            const mailtoLink = `mailto:hello@lolfoamparties.com?subject=New Foam Party Booking - ${formData.fullName}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Reset form and close popup after a short delay
+            setTimeout(() => {
+                form.reset();
+                document.getElementById('booking-popup').classList.remove('active');
+                document.body.classList.remove('popup-open');
+                form.classList.remove('loading');
+            }, 1000);
+            
+        } catch (error) {
+            alert('Sorry, there was a problem opening your email client. Please try again or contact us directly.');
+            form.classList.remove('loading');
+        }
+    });
 });
 
 // Add bubble animation to the background
