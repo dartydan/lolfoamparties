@@ -29,6 +29,16 @@ const faqData = [
     }
 ];
 
+// Function to dynamically load scripts
+function loadScript(src, id, async = false, defer = false) {
+    const script = document.createElement('script');
+    script.src = src;
+    if (id) script.id = id;
+    if (async) script.async = true;
+    if (defer) script.defer = true;
+    document.body.appendChild(script);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const faqGrid = document.querySelector('.faq-grid');
     
@@ -58,6 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         faqGrid.appendChild(faqItem);
     });
+
+    // Load HubSpot form script for the booking section
+    loadScript('https://js-na2.hsforms.net/forms/embed/242470866.js', null, false, true);
+    
+    // Load HubSpot tracking script
+    loadScript('//js-na2.hs-scripts.com/242470866.js', 'hs-script-loader', true, true);
 
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
