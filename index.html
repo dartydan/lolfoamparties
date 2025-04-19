@@ -37,25 +37,6 @@
     </header>
 
     <main>
-        <iframe
-  src="https://link.serviceconnector.pro/widget/form/yZwsRdODLxcyPnp1d4zz"
-  style="display:none;width:100%;height:100%;border:none;border-radius:0px"
-  id="polite-slide-in-right-yZwsRdODLxcyPnp1d4zz" 
-  data-layout="{'id':'POLITE_SLIDE_IN','minimizedTitle':'','isLeftAligned':false,'isRightAligned':true,'allowMinimize':true}"
-  data-trigger-type="showOnScrolling"
-  data-trigger-value="20"
-  data-activation-type="alwaysActivated"
-  data-activation-value=""
-  data-deactivation-type="neverDeactivate"
-  data-deactivation-value=""
-  data-form-name="Foam Party Calendar Form"
-  data-height="858"
-  data-layout-iframe-id="polite-slide-in-right-yZwsRdODLxcyPnp1d4zz"
-  data-form-id="yZwsRdODLxcyPnp1d4zz"
-  title="Foam Party Calendar Form"
-      >
-</iframe>
-<script src="https://link.serviceconnector.pro/js/form_embed.js"></script>
         <section id="home" class="hero-section" aria-label="Welcome">
             <div class="hero-content">
                 <img src="./img/favicon.png" 
@@ -71,7 +52,7 @@
 
                 <a href="#book" 
                    class="cta-button large" 
-                   role="button" 
+                   role="button"
                    aria-label="Book your foam party now">
                     Book Now!
                 </a>
@@ -125,7 +106,7 @@
                         <li>Perfect for about 25 participants</li>
                     </ul>
                     <p class="note">Ask us about adding additional time or colored foam!</p>
-                    <a href="#book?package=frenzy" class="cta-button">Book Now!</a>
+                    <a href="#book" class="cta-button">Book Now!</a>
                 </div>
 
                 <div class="package-card featured">
@@ -139,7 +120,7 @@
                         <li>Perfect for about 25 participants</li>
                     </ul>
                     <p class="note">Ask us about adding additional time or GLOWING foam!</p>
-                    <a href="#book?package=night" class="cta-button">Book Now!</a>
+                    <a href="#book" class="cta-button">Book Now!</a>
                 </div>
 
                 <div class="package-card">
@@ -147,7 +128,7 @@
                         <h3>Foam Festivities</h3>
                         <p class="price">Starting at $600</p>
                         <p>Hosting a larger event? We'll bring more foam!</p>
-                        <a href="#book?package=festival" class="cta-button">Contact Us</a>
+                        <a href="#book" class="cta-button">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -205,98 +186,28 @@
 
         <section id="book" class="booking-section">
             <h2>Book a Party</h2>
-            <form id="inline-booking-form" class="booking-form simple-form">
-                <div class="form-group">
-                    <input type="text" id="inline-fullName" name="fullName" placeholder=" " required>
-                    <label for="inline-fullName">Full Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="inline-email" name="email" placeholder=" " required>
-                    <label for="inline-email">Email</label>
-                </div>
-                <div class="form-group">
-                    <input type="tel" id="inline-phone" name="phone" placeholder=" " required>
-                    <label for="inline-phone">Phone number with area code</label>
-                </div>
-                <button type="button" class="cta-button continue-btn">Continue</button>
-            </form>
+            <div class="hubspot-form-container">
+                <script src="https://js-na2.hsforms.net/forms/embed/242470866.js" defer></script>
+                <div class="hs-form-frame" data-region="na2" data-form-id="0db16b99-f528-491a-a105-b266441e1638" data-portal-id="242470866"></div>
+            </div>
         </section>
+
+        <footer>
+            <div class="contact-info">
+                <p>Please reach out with us with questions or for more information.</p>
+                <p>Call or text <a href="tel:7652179009">765-217-9009</a></p>
+                <a href="https://www.facebook.com/share/1KVJbGoKMe/?mibextid=wwXIfr" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                    <span>Find us on Facebook</span>
+                </a>
+            </div>
+        </footer>
     </main>
 
-    <footer>
-        <div class="contact-info">
-            <p>Please reach out with us with questions or for more information.</p>
-            <p>Call or text <a href="tel:7652179009">765-217-9009</a></p>
-            <a href="https://www.facebook.com/share/1KVJbGoKMe/?mibextid=wwXIfr" class="social-link">
-                <i class="fab fa-facebook"></i>
-                <span>Find us on Facebook</span>
-            </a>
-        </div>
-    </footer>
-
-    <!-- Remove the existing form section and add this popup markup at the end of the body -->
-    <div id="booking-popup" class="popup-overlay">
-        <div class="popup-content">
-            <button class="close-popup" aria-label="Close booking form">&times;</button>
-            <h2>Book a Party</h2>
-            <form id="booking-form" class="booking-form" onsubmit="return false;">
-                <div class="form-group">
-                    <input type="text" id="fullName" name="fullName" placeholder=" " required>
-                    <label for="fullName">Full Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder=" " required>
-                    <label for="email">Email</label>
-                </div>
-                <div class="form-group">
-                    <input type="tel" id="phone" name="phone" placeholder=" " required>
-                    <label for="phone">Phone number with area code</label>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="company" name="company" placeholder=" ">
-                    <label for="company">Company (Optional)</label>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="address" name="address" placeholder=" ">
-                    <label for="address">Event Address</label>
-                </div>
-                <div class="form-group">
-                    <input type="date" id="eventDate" name="eventDate" placeholder=" ">
-                    <label for="eventDate">Date of Event</label>
-                </div>
-                <div class="form-group">
-                    <input type="time" id="eventTime" name="eventTime" placeholder=" ">
-                    <label for="eventTime">Event start time</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder=" "></textarea>
-                    <label for="message">Message / Please tell us about your event</label>
-                </div>
-                <div class="form-group">
-                    <select id="package" name="package">
-                        <option value="">Select a foam package</option>
-                        <option value="frenzy">Foam Frenzy</option>
-                        <option value="night">Night Foam</option>
-                        <option value="festival">Larger Events</option>
-                        <option value="thinking">Still thinking</option>
-                    </select>
-                </div>
-                <div class="form-group upgrades">
-                    <p>Interested in upgrading?</p>
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="colored-foam" name="colored-foam">
-                        <label for="colored-foam">Colored foam</label>
-                    </div>
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="extra-time" name="extra-time">
-                        <label for="extra-time">Extra time</label>
-                    </div>
-                </div>
-                <button type="submit" class="cta-button">Submit</button>
-            </form>
-        </div>
-    </div>
-
     <script src="script.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/242470866.js"></script>
+    <!-- End of HubSpot Embed Code -->
 </body>
 </html> 
