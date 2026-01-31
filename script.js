@@ -29,6 +29,16 @@ const faqData = [
     }
 ];
 
+// Function to dynamically load scripts
+function loadScript(src, id, async = false, defer = false) {
+    const script = document.createElement('script');
+    script.src = src;
+    if (id) script.id = id;
+    if (async) script.async = true;
+    if (defer) script.defer = true;
+    document.body.appendChild(script);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const faqGrid = document.querySelector('.faq-grid');
     
@@ -59,82 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         faqGrid.appendChild(faqItem);
     });
 
-    // Handle package selection in form
-    const packageSelect = document.querySelector('#package');
-    if (packageSelect) {
-        // Get package from URL parameter
-        const urlParams = new URLSearchParams(window.location.hash.slice(1));
-        const selectedPackage = urlParams.get('package');
-        
-        if (selectedPackage) {
-            // Find and select the matching option
-            const options = packageSelect.options;
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].value === selectedPackage.toLowerCase()) {
-                    packageSelect.selectedIndex = i;
-                    break;
-                }
-            }
-            
-            // Scroll to form
-            document.querySelector('#book').scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    // Popup handling
-    const popup = document.getElementById('booking-popup');
-    const closeBtn = popup.querySelector('.close-popup');
+    // Load HubSpot form script for the booking section
+    loadScript('https://js-na2.hsforms.net/forms/embed/242470866.js', null, false, true);
     
-    // Function to open popup
-    function openPopup() {
-        popup.classList.add('active');
-        document.body.classList.add('popup-open');
-    }
-    
-    // Function to close popup
-    function closePopup() {
-        popup.classList.remove('active');
-        document.body.classList.remove('popup-open');
-    }
-    
-    // Close popup when clicking outside
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopup();
-        }
-    });
-    
-    // Close popup with close button
-    closeBtn.addEventListener('click', closePopup);
-    
-    // Close popup with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && popup.classList.contains('active')) {
-            closePopup();
-        }
-    });
-    
-    // Open popup when clicking any Book Now button
-    document.querySelectorAll('[href*="#book"]').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            openPopup();
-            
-            // Handle package selection
-            const params = new URLSearchParams(button.getAttribute('href').split('?')[1]);
-            const selectedPackage = params.get('package');
-            
-            if (selectedPackage && packageSelect) {
-                const options = packageSelect.options;
-                for (let i = 0; i < options.length; i++) {
-                    if (options[i].value === selectedPackage.toLowerCase()) {
-                        packageSelect.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-        });
-    });
+    // Load HubSpot tracking script
+    loadScript('//js-na2.hs-scripts.com/242470866.js', 'hs-script-loader', true, true);
 
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
@@ -173,99 +112,20 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleMenu();
         }
     });
-
-    // Handle simple form submission
-    const simpleForm = document.getElementById('inline-booking-form');
-    const continueBtn = simpleForm.querySelector('.continue-btn');
     
-    continueBtn.addEventListener('click', () => {
-        // Get values from simple form
-        const name = document.getElementById('inline-fullName').value;
-        const email = document.getElementById('inline-email').value;
-        const phone = document.getElementById('inline-phone').value;
-        
-        // Validate required fields
-        if (!name || !email || !phone) {
-            alert('Please fill in all fields to continue');
-            return;
-        }
-        
-        // Pre-fill popup form
-        document.getElementById('fullName').value = name;
-        document.getElementById('email').value = email;
-        document.getElementById('phone').value = phone;
-        
-        // Trigger labels to move up
-        document.getElementById('fullName').dispatchEvent(new Event('input'));
-        document.getElementById('email').dispatchEvent(new Event('input'));
-        document.getElementById('phone').dispatchEvent(new Event('input'));
-        
-        // Open popup
-        popup.classList.add('active', 'from-simple-form');
-        document.body.classList.add('popup-open');
-    });
-
-    // Update form submission handling
-    document.getElementById('booking-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const form = e.target;
-        
-        // Add loading state
-        form.classList.add('loading');
-        
-        try {
-            // Get all form values
-            const formData = {
-                fullName: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                company: document.getElementById('company').value,
-                address: document.getElementById('address').value,
-                eventDate: document.getElementById('eventDate').value,
-                eventTime: document.getElementById('eventTime').value,
-                message: document.getElementById('message').value,
-                package: document.getElementById('package').value,
-                coloredFoam: document.getElementById('colored-foam').checked ? 'Yes' : 'No',
-                extraTime: document.getElementById('extra-time').checked ? 'Yes' : 'No'
-            };
-
-            // Create email body
-            const emailBody = `
-New Foam Party Booking Request:
-
-Name: ${formData.fullName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Company: ${formData.company}
-Event Address: ${formData.address}
-Event Date: ${formData.eventDate}
-Event Time: ${formData.eventTime}
-Package: ${formData.package}
-Colored Foam: ${formData.coloredFoam}
-Extra Time: ${formData.extraTime}
-
-Message:
-${formData.message}
-            `.trim();
-
-            // Create mailto link
-            const mailtoLink = `mailto:hello@lolfoamparties.com?subject=New Foam Party Booking - ${formData.fullName}&body=${encodeURIComponent(emailBody)}`;
+    // Add smooth scrolling for book now links
+    document.querySelectorAll('a[href="#book"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Reset form and close popup after a short delay
-            setTimeout(() => {
-                form.reset();
-                document.getElementById('booking-popup').classList.remove('active');
-                document.body.classList.remove('popup-open');
-                form.classList.remove('loading');
-            }, 1000);
-            
-        } catch (error) {
-            alert('Sorry, there was a problem opening your email client. Please try again or contact us directly.');
-            form.classList.remove('loading');
-        }
+            const bookSection = document.getElementById('book');
+            if (bookSection) {
+                bookSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 });
 

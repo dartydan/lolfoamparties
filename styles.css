@@ -1932,25 +1932,22 @@ footer .contact-info .social-link {
     border-radius: 2px;
 }
 
-/* Responsive adjustments */
+.hubspot-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .booking-section {
         padding: 3rem 1rem;
     }
-}
-
-/* Add styles for the simplified form */
-.simple-form {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.simple-form .continue-btn {
-    margin-top: 2rem;
-    width: 100%;
-}
-
-/* Update popup styles to handle pre-filled data */
-.popup-overlay.from-simple-form .popup-content {
-    transform: translateY(0);
+    
+    .hubspot-form-container {
+        padding: 1.5rem;
+    }
 } 
