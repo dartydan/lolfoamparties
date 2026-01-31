@@ -106,13 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Close menu with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
-    
     // Add smooth scrolling for book now links
     document.querySelectorAll('a[href="#book"]').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -126,6 +119,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    });
+
+    // Book a Party popup: open when Continue is clicked
+    const continueBtn = document.querySelector('.continue-btn');
+    const bookingPopup = document.getElementById('booking-popup');
+    const inlineForm = document.getElementById('inline-booking-form');
+
+    if (continueBtn && bookingPopup && inlineForm) {
+        continueBtn.addEventListener('click', () => {
+            if (!inlineForm.reportValidity()) return;
+            bookingPopup.classList.add('active');
+            document.getElementById('fullName').value = document.getElementById('inline-fullName').value;
+            document.getElementById('email').value = document.getElementById('inline-email').value;
+            document.getElementById('phone').value = document.getElementById('inline-phone').value;
+        });
+    }
+
+    // Close popup: close button and overlay click
+    const closePopupBtn = document.querySelector('.close-popup');
+    if (closePopupBtn && bookingPopup) {
+        closePopupBtn.addEventListener('click', () => bookingPopup.classList.remove('active'));
+    }
+    if (bookingPopup) {
+        bookingPopup.addEventListener('click', (e) => {
+            if (e.target === bookingPopup) bookingPopup.classList.remove('active');
+        });
+    }
+
+    // Close menu or popup with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            toggleMenu();
+        } else if (e.key === 'Escape' && bookingPopup && bookingPopup.classList.contains('active')) {
+            bookingPopup.classList.remove('active');
+        }
     });
 });
 
